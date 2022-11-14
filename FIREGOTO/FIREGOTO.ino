@@ -43,6 +43,8 @@ double dMaxSpeedAzCalculo = dMaxPassoAzCalculo;
 int dMinTimerCalculo = 150;
 int dReducaoCalculo = 64;
 bool possuiLCD = true; 
+bool tmcFlag = true; 
+// if true, using TMC2209; if false, using DVR8825
 
 // Código adaptado por L.H.Bonani 
 #include <AccelStepper.h>
@@ -76,8 +78,6 @@ int flagDebug = 0;
                 (Eixo Y) 
 
 **/
-
-bool tmcFlag = true; // if true, using TMC2209; if false, using DVR8825
 String sDriver;
 
 //Menu e joystick
