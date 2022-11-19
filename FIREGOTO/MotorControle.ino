@@ -279,7 +279,7 @@ void CalculaResolucao(){
 
 
 void CalcPosicaoPasso()
-{
+{  
   ALTmount = AltMotor.currentPosition();
   AZmount = AzMotor.currentPosition();
   eixoAltGrausDecimal = ResolucaoeixoAltGrausDecimal * ALTmount;

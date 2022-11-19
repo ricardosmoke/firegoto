@@ -43,6 +43,8 @@ double dMaxSpeedAzCalculo = dMaxPassoAzCalculo;
 int dMinTimerCalculo = 150;
 int dReducaoCalculo = 64;
 bool possuiLCD = true; 
+bool tmcFlag = true; 
+// if true, using TMC2209; if false, using DVR8825
 
 // Código adaptado por L.H.Bonani 
 #include <AccelStepper.h>
@@ -76,8 +78,6 @@ int flagDebug = 0;
                 (Eixo Y) 
 
 **/
-
-bool tmcFlag = true; // if true, using TMC2209; if false, using DVR8825
 String sDriver;
 
 //Menu e joystick
@@ -281,7 +281,7 @@ double longitude;
 int UTC;
 
 int fractime;
-unsigned long currentMillis, previousMillis, PrimeiroCommanMillis, calculaRADECmountMillis = 0 , previousMillisLed = 0;
+unsigned long currentMillis, previousMillis, PrimeiroCommanMillis, calculaRADECmountMillis = 0 , previousMillisLed = 0, previousMillisSync = 0;
 
 //Variaveis de controle para ler comandos LX200  ----------------------------------------------------------------------------------------------------------------
 boolean cmdComplete = false, doispontos = true; // whether the string is complete
@@ -360,9 +360,11 @@ void setup() {
   DefinirResolucaoEixos();
   DefinirPosicaoInicial();  
   DefinirUsoLCD();
+
+  pinMode(25, INPUT);
 }
 
-void loop() {
+void loop() {  
 
   if (ledStateR == LOW) {
     ledStateR = HIGH;
@@ -462,4 +464,34 @@ void loop() {
     controlJoystick();
     menu();
   }
+
+    
+  int valPort25 = digitalRead(25);    
+
+  if (currentMillis > (previousMillisSync + 500)) {    
+    if (valPort25 == 0) {
+      previousMillisSync = millis();            
+      setDECAlvoTeste();
+      setRAAlvoTeste();
+      syncro();
+      synctelescopeString();
+      Serial.println("Sincronizar");
+    }
+  }
+  
+}
+
+
+void setRAAlvoTeste()
+{
+  ativaacom = 0;  
+  RAAlvo = 0.0;  
+  AltAlvo = RAAlvo;
+}
+
+void setDECAlvoTeste()
+{
+  ativaacom = 0;  
+  DECAlvo = 0.0;  
+  AzAlvo = DECAlvo;  
 }

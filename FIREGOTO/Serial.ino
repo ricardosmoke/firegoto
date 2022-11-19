@@ -52,7 +52,7 @@
   }*/
 void SerialPrint(String str)
 {
-  Serial.print(str);
+  //Serial.print(str);
   Serial3.print(str);
   SerialUSB.print(str);
   ledStateB = HIGH;

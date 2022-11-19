@@ -110,24 +110,7 @@ void menu(){
         lastInputCheckTime = millis();
       }
       menu5();
-      break;
-
-    case 6: // Menu Nivelar
-    
-      jBut = digitalRead(kPin);
-      if (jBut == 0 && millis() > lastTrueNivelarStatus + 350) {
-        if (nivelarStatus == false) {
-          nivelarStatus = true;
-          lastTrueNivelarStatus = millis();
-          digitalWrite(MotorFoc_Enable, LOW);
-        } else {
-          nivelarStatus = false;
-          digitalWrite(MotorFoc_Enable, HIGH);
-        }
-        lastInputCheckTime = millis();
-      }
-      menu6();
-      break;
+      break;    
       
   }//switch
 }
@@ -144,26 +127,6 @@ void menu5(){
     lcd.setCursor(0,1);
     lcd.print("On ");    
     Estacionar();   
-  }
-
-  lcd.setCursor(0,3);    
-  lcd.print("Posicao atual: ");
-  lcd.setCursor(16,3);
-  lcdALTmount();
-}
-
-void menu6(){ 
-  if (refresh){lcd.clear();refresh=0;}
-  lcd.setCursor(0,0);
-  lcd.print(">Nivelar OTA");
-  if (nivelarStatus == false) {
-    lcd.setCursor(0,1);
-    lcd.print("Off");    
-    paraAltMotor();
-  } else {    
-    lcd.setCursor(0,1);
-    lcd.print("On ");
-    Nivelar();       
   }
 
   lcd.setCursor(0,3);    
@@ -816,11 +779,11 @@ void controlJoystick(){ // Modificação de controlJoystick() por L.H.Bonani
             mNivel1--;    //para cima
             refresh=1;
          } else {
-            mNivel1=6;    // menu focalizador
+            mNivel1=5;    // menu focalizador
             refresh=1;
          }
       } else if (joyPos==3) {
-         if (mNivel1<6){
+         if (mNivel1<5){
             mNivel1++;    // para baixo
             refresh=1;
          } else {

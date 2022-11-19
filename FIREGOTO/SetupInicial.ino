@@ -45,11 +45,11 @@ void ExecutarPrimeiraConfiguracao() {
     configuration.MaxPassoAlt = dMaxPassoAlt;
     configuration.MaxPassoAz = dMaxPassoAz;
     configuration.MinTimer = dMinTimer;
-    configuration.latitude = -25.40;;
-    configuration.longitude = -49.20;
+    configuration.latitude = -26.89;;
+    configuration.longitude = -49.05;
     configuration.SentidoDEC = 0;
     configuration.SentidoRA = 0;
-    setTime(00, 00, 00, 01, 01, 2021);
+    setTime(00, 00, 00, 18, 11, 2022);
     MilissegundoSeg = second();
     configuration.DataHora = now();
     configuration.UTC = -3;

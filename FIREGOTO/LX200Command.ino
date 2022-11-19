@@ -778,7 +778,7 @@ void printSIderalRate() //Get sidereal rate RA (0 or 60Hz)	:GT# 	Reply: 0 or 60#
 }
 
 void setRAAlvo() //:Sr03:43:56# Set target RA 	:SrHH:MM:SS# * 	Reply: 0 or 1#
-{
+{  
   ativaacom = 0;
   String str = "";
   str += Command[numCommandexec][3];
@@ -794,12 +794,11 @@ void setRAAlvo() //:Sr03:43:56# Set target RA 	:SrHH:MM:SS# * 	Reply: 0 or 1#
   int SS = str.toInt();
   str = "";
   RAAlvo = Hours2DecDegrees(HH, MM, SS);
-  SerialPrint("1");
-
+  SerialPrint("1");  
 }
 
 void setDECAlvo() //Set target Dec 	:SdsDD:MM:SS# *	Reply: 0 or 1#
-{
+{  
   ativaacom = 0;
   String str = "";
   str += Command[numCommandexec][4];
@@ -819,11 +818,11 @@ void setDECAlvo() //Set target Dec 	:SdsDD:MM:SS# *	Reply: 0 or 1#
   {
     DECAlvo = DECAlvo * (-1);
   }
-  SerialPrint("1");
+  SerialPrint("1");  
 }
 
 void synctelescope() //Sync. with current target RA/Dec	:CS#	Reply: [none]
-{
+{  
   double horadec = Hora2DecHora(hour(), minute(), SegundoFracao) ;
   double jdia = JulianoDay (year(), month(), day(), horadec) ;
   double HST = HoraSideral(jdia);
@@ -840,13 +839,16 @@ void synctelescope() //Sync. with current target RA/Dec	:CS#	Reply: [none]
 
 }
 void synctelescopeString() //:CM# Synchronizes the telescope position with target. Returns static string: " M31 EX GAL MAG 3.5 SZ178.0'#", or "#" if error.
-{
+{  
   double horadec = Hora2DecHora(hour(), minute(), SegundoFracao) ;
   double jdia = JulianoDay (year(), month(), day(), horadec) ;
   double HST = HoraSideral(jdia);
   double HSL = HoraSiderallocal(longitude, HST) ;
+  
   Radec2Azalt(HSL, latitude, RAAlvo, DECAlvo, &AzAlvo, &AltAlvo);
+
   if ((AzAlvo >= 0) && (AltAlvo >= 0)) {
+      
     ALTmount = ( AltAlvo * ResolucaoeixoAltPassoGrau);
     AZmount = ( AzAlvo * ResolucaoeixoAzPassoGrau);
     AZmountAlvo = AZmount;
@@ -855,7 +857,6 @@ void synctelescopeString() //:CM# Synchronizes the telescope position with targe
     ativaacom = 1;
     printRAmount();
   }
-
 }
 void setRAbacklash ()// Set RA backlash amount (in ArcSec)	:$BRnnn# 	Reply: 0 or 1#
 {
