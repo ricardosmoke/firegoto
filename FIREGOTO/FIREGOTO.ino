@@ -64,20 +64,7 @@ int flagDebug = 0;
 #define yPin     A0   // eixo y (VT na placa)
 #define xPin     A1   // eixo x (HR na placa)
 #define kPin     A2   // botão (SL na placa)
-/*
-             Configuração Física Joystick
-                   Y- 
-                   o (512,0)
-- GND |            |
-- +5V |  (0,512)|
-- VRx | X- o---------------o X+ (Eixo X)
-- VRy |            |      (1023,512)
-- SW  |            |
-           (512,1023) o 
-                   Y+
-                (Eixo Y) 
-
-**/
+// Mais detalhes sobre a configuração física do joystick, verificar no arquivo readme
 String sDriver;
 
 //Menu e joystick
