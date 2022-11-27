@@ -35,6 +35,7 @@
   Levando em consideração que as caixas de redução são iguais, o mesmo valor deve ser inserido na variavel dMaxPassoAzCalculo.
 
   Se o seu sistema possui LCD, definir "true" na variavel possuiLCD, senão "false"
+  Se o seu sistema possui driver TMC, definir "true" na variavel tmcFlag, senão "false"
 */
 double dMaxPassoAltCalculo = 11840000;
 double dMaxPassoAzCalculo = 11840000;
@@ -44,7 +45,6 @@ int dMinTimerCalculo = 150;
 int dReducaoCalculo = 64;
 bool possuiLCD = true; 
 bool tmcFlag = true; 
-// if true, using TMC2209; if false, using DVR8825
 
 // Código adaptado por L.H.Bonani 
 #include <AccelStepper.h>
