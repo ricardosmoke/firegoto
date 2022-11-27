@@ -45,7 +45,7 @@ GNU AFFERO GENERAL PUBLIC LICENSE https://github.com/rangelsardinha/FIREGOTO-fir
 Biblioteca de coordenadas: https://github.com/juanrmn/Arduino-Telescope-Control/blob/master/main/arduino/plaser/CoordsLib.h
 
 
-# Configuração Física Joystick
+- Configuração Física Joystick
              
                    Y- 
                    o (512,0)
