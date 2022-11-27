@@ -43,3 +43,17 @@ Driver ASCOM esta em: http://www.stellarjourney.com/index.php?r=site/software_te
 GNU AFFERO GENERAL PUBLIC LICENSE https://github.com/rangelsardinha/FIREGOTO-firmware/blob/master/LICENSE.md
 
 Biblioteca de coordenadas: https://github.com/juanrmn/Arduino-Telescope-Control/blob/master/main/arduino/plaser/CoordsLib.h
+
+
+#Configuração Física Joystick
+             
+                   Y- 
+                   o (512,0)
+- GND |            |
+- +5V |  (0,512)|
+- VRx | X- o---------------o X+ (Eixo X)
+- VRy |            |      (1023,512)
+- SW  |            |
+           (512,1023) o 
+                   Y+
+                (Eixo Y) 
